@@ -11,7 +11,10 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <audio id="background-music" loop></audio> 
+    <!-- AJUSTE: Adicionada a música específica para as cartas -->
+    <audio id="background-music" loop>
+        <source src="../sounds/ANAVITÓRIA, Lenine - Lisboa (visualizer).mp3" type="audio/mpeg">
+    </audio> 
     <canvas id="smoke"></canvas>
 
     <div id="main-site-content" style="opacity: 1;">
@@ -34,25 +37,16 @@
             </div>
 
             <div class="letter-display-area">
-                <!-- AJUSTE: O placeholder agora fica visível por padrão com a classe 'active' -->
                 <div id="letter-placeholder" class="letter-content active">
                     <p>Selecione uma carta acima para ler.</p>
                 </div>
-
-                <!-- AJUSTE: Removido o 'style="display: none;"' de todas as cartas abaixo -->
                 <div id="letter1" class="letter-content">
                     <h2>Quando a saudade bater</h2>
-                    <p>Oi meu bem. Sei que às vezes você se sente só, mas 
-                        quero que saiba que estou aqui com você, mesmo que 
-                        seja só no pensamento agora. Cada sorriso seu é 
-                        importante pra mim, cada momento que passamos juntos está guardado no 
-                        meu coração. Respira bem fundo, amor… você nunca está realmente sozinha, porque eu estou com você.</p>
+                    <p>Oi meu bem. Sei que às vezes você se sente só, mas quero que saiba que estou aqui com você, mesmo que seja só no pensamento agora. Cada sorriso seu é importante pra mim, cada momento que passamos juntos está guardado no meu coração. Respira bem fundo, amor… você nunca está realmente sozinha, porque eu estou com você.</p>
                 </div>
                 <div id="letter2" class="letter-content">
                     <h2>Para os dias difíceis</h2>
-                    <p>Oi meu amor. Sei que hoje está difícil, mas quero que saiba que eu estou aqui, 
-                        pensando em você e te mandando todo meu carinho. Você é minha pessoa favorita, e 
-                        não precisa enfrentar nada sozinha.</p>
+                    <p>Oi meu amor. Sei que hoje está difícil, mas quero que saiba que eu estou aqui, pensando em você e te mandando todo meu carinho. Você é minha pessoa favorita, e não precisa enfrentar nada sozinha.</p>
                 </div>
                 <div id="letter3" class="letter-content">
                     <h2>Para você rir</h2>

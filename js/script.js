@@ -1,45 +1,107 @@
 // --- LÓGICA GLOBAL COMPLETA DO SITE ---
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- ELEMENTOS GERAIS ---
     const backgroundMusic = document.getElementById('background-music');
-    const musicControl = document.getElementById('music-control');
-    const musicIcon = document.getElementById('music-icon');
+    let musicControl = document.getElementById('music-control');
+    let musicIcon = document.getElementById('music-icon');
 
-    // --- LÓGICA DE CONTROLO DA MÚSICA ---
+    // Cria o botão de controlo de música se ele não existir na página
+    if (!musicControl) {
+        const musicButton = document.createElement('div');
+        musicButton.id = 'music-control';
+        musicButton.className = 'music-control-button';
+        musicButton.innerHTML = '<i id="music-icon" class="fa-solid fa-play"></i>';
+        document.body.appendChild(musicButton);
+        musicControl = musicButton;
+        musicIcon = document.getElementById('music-icon');
+    }
+    
+    // Adiciona o evento de clique ao botão de controlo
     if (musicControl) {
-        function togglePlayPause() {
-            if (backgroundMusic.paused) {
-                backgroundMusic.play().catch(e => console.log("Erro ao tocar música:", e));
+        musicControl.addEventListener('click', togglePlayPause);
+    }
+    
+    // Função principal para tocar/pausar
+    function togglePlayPause() {
+        if (!backgroundMusic) return;
+        
+        if (backgroundMusic.paused) {
+            backgroundMusic.play().catch(e => console.log("Erro ao tocar música:", e));
+            if(musicIcon) {
                 musicIcon.classList.remove('fa-play');
                 musicIcon.classList.add('fa-pause');
-            } else {
-                backgroundMusic.pause();
+            }
+            localStorage.setItem('musicState', 'playing');
+        } else {
+            backgroundMusic.pause();
+             if(musicIcon) {
                 musicIcon.classList.remove('fa-pause');
                 musicIcon.classList.add('fa-play');
             }
+            localStorage.setItem('musicState', 'paused');
         }
-        musicControl.addEventListener('click', togglePlayPause);
     }
 
-    // --- LÓGICA DA TELA DE BOAS-VINDAS ---
+    // Identifica se a página é a principal (index)
+    const isIndexPage = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html');
+    
+    // Salva o estado da música principal APENAS se estiver na página principal
+    if (isIndexPage) {
+        window.addEventListener('beforeunload', () => {
+            if (backgroundMusic && !backgroundMusic.paused) {
+                localStorage.setItem('mainMusicState', 'playing');
+                localStorage.setItem('mainMusicTime', backgroundMusic.currentTime);
+            } else {
+                 localStorage.setItem('mainMusicState', 'paused');
+            }
+        });
+    }
+
+    // Restaura o estado da música ao carregar
+    if (backgroundMusic) {
+        const lastMusicState = localStorage.getItem('mainMusicState');
+        const lastMusicTime = localStorage.getItem('mainMusicTime');
+        
+        // Se a página atual NÃO for a principal, toca a sua própria música
+        if (!isIndexPage) {
+            if (lastMusicState === 'playing') {
+                backgroundMusic.play().catch(e => {});
+                if(musicIcon) {
+                    musicIcon.classList.remove('fa-play');
+                    musicIcon.classList.add('fa-pause');
+                }
+            }
+        } 
+        // Se FOR a página principal, restaura o estado anterior
+        else {
+            if (lastMusicTime) {
+                backgroundMusic.currentTime = parseFloat(lastMusicTime);
+            }
+            if (lastMusicState === 'playing') {
+                backgroundMusic.play().catch(e => {});
+                if(musicIcon) {
+                    musicIcon.classList.remove('fa-play');
+                    musicIcon.classList.add('fa-pause');
+                }
+            }
+        }
+    }
+
+
+    // --- LÓGICA DA TELA DE BOAS-VINDAS (só para o index.html) ---
     const welcomeScreen = document.getElementById('welcome-screen');
     const mainContent = document.getElementById('main-site-content');
 
     if (welcomeScreen) {
         welcomeScreen.addEventListener('click', () => {
-            if (backgroundMusic.paused) {
-                backgroundMusic.play().catch(e => console.log("Autoplay bloqueado, aguardando interação."));
-                if (musicIcon) {
-                    musicIcon.classList.remove('fa-play');
-                    musicIcon.classList.add('fa-pause');
-                }
+            if (backgroundMusic && backgroundMusic.paused) {
+                togglePlayPause(); // Usa a nossa função principal
             }
             welcomeScreen.style.opacity = '0';
             setTimeout(() => {
                 welcomeScreen.style.display = 'none';
             }, 800);
-            mainContent.style.opacity = '1';
+            if(mainContent) mainContent.style.opacity = '1';
         });
     }
 
@@ -47,25 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const letterTriggers = document.querySelectorAll('.letter-trigger');
     if (letterTriggers.length > 0) {
         const letterContents = document.querySelectorAll('.letter-content');
-        const placeholder = document.getElementById('letter-placeholder');
-
         letterTriggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const targetId = trigger.dataset.target;
                 const targetContent = document.getElementById(targetId);
-
-                // Remove a aura e esconde todas as outras cartas
-                letterContents.forEach(content => {
-                    content.classList.remove('active');
-                });
-                if (placeholder) {
-                    placeholder.style.display = 'none';
-                }
-
-                // Mostra e adiciona a aura na carta clicada
-                if (targetContent) {
-                    targetContent.classList.add('active');
-                }
+                letterContents.forEach(content => content.classList.remove('active'));
+                if (targetContent) targetContent.classList.add('active');
             });
         });
     }
@@ -81,20 +130,14 @@ document.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('click', e => {
                 e.preventDefault();
                 const imageUrl = item.getAttribute('href');
-                lightboxImg.setAttribute('src', imageUrl);
-                lightbox.style.display = 'flex';
+                if(lightboxImg) lightboxImg.setAttribute('src', imageUrl);
+                if(lightbox) lightbox.style.display = 'flex';
             });
         });
 
-        function closeLightbox() {
-            if (lightbox) lightbox.style.display = 'none';
-        }
+        function closeLightbox() { if (lightbox) lightbox.style.display = 'none'; }
         if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-        if (lightbox) lightbox.addEventListener('click', e => {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
-        });
+        if (lightbox) lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
     }
 
 
@@ -104,49 +147,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
         class Smoke {
             constructor() { this.reset(); }
-            reset() {
-                this.fromTop = Math.random() < 0.5;
-                this.x = Math.random() * canvas.width;
-                this.y = this.fromTop ? -Math.random() * 100 : canvas.height + Math.random() * 100;
-                this.size = Math.random() * 60 + 40;
-                this.speedY = Math.random() * 0.3 + 0.1;
-                this.angle = Math.random() * Math.PI * 2;
-                this.alpha = Math.random() * 0.1 + 0.05;
-            }
-            update() {
-                if (this.fromTop) { this.y += this.speedY; } else { this.y -= this.speedY; }
-                this.angle += 0.002;
-                this.x += Math.sin(this.angle) * 0.3;
-                this.alpha -= 0.0005;
-                if (this.alpha <= 0 || this.y < -100 || this.y > canvas.height + 100) this.reset();
-            }
-            draw() {
-                const gradient = ctx.createRadialGradient(this.x, this.y, this.size * 0.1, this.x, this.y, this.size);
-                gradient.addColorStop(0, `rgba(200,200,200,${this.alpha})`);
-                gradient.addColorStop(1, 'rgba(0,0,0,0)');
-                ctx.fillStyle = gradient;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
+            reset() { this.fromTop = Math.random() < 0.5; this.x = Math.random() * canvas.width; this.y = this.fromTop ? -Math.random() * 100 : canvas.height + Math.random() * 100; this.size = Math.random() * 60 + 40; this.speedY = Math.random() * 0.3 + 0.1; this.angle = Math.random() * Math.PI * 2; this.alpha = Math.random() * 0.1 + 0.05; }
+            update() { if (this.fromTop) { this.y += this.speedY; } else { this.y -= this.speedY; } this.angle += 0.002; this.x += Math.sin(this.angle) * 0.3; this.alpha -= 0.0005; if (this.alpha <= 0 || this.y < -100 || this.y > canvas.height + 100) this.reset(); }
+            draw() { const gradient = ctx.createRadialGradient(this.x, this.y, this.size * 0.1, this.x, this.y, this.size); gradient.addColorStop(0, `rgba(200,200,200,${this.alpha})`); gradient.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = gradient; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
         }
-
         const smokes = [];
         for (let i = 0; i < 60; i++) smokes.push(new Smoke());
-
-        function animateSmoke() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            smokes.forEach(s => { s.update(); s.draw(); });
-            requestAnimationFrame(animateSmoke);
-        }
+        function animateSmoke() { ctx.clearRect(0, 0, canvas.width, canvas.height); smokes.forEach(s => { s.update(); s.draw(); }); requestAnimationFrame(animateSmoke); }
         animateSmoke();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
     }
 });

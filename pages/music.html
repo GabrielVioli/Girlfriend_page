@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Nossa Playlist 💜</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- A música desta página será a principal, controlada pelo JS -->
+    <audio id="background-music" loop>
+        <source src="../sounds/BK’ part. Evinha (prod. Kolo) - Cacos De Vidro (sample_ Esperar pra ver) - (Visualizer).mp3" type="audio/mpeg">
+    </audio> 
+    <canvas id="smoke"></canvas>
+
+    <div id="main-site-content" style="opacity: 1;">
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i> Voltar ao Início
+            </a>
+        </div>
+
+        <header class="main-header">
+            <h1 class="page-title">A Trilha Sonora do Nosso Amor 🎶</h1> 
+        </header>
+
+        <main class="page-content">
+            <div class="playlist-container">
+                <p class="playlist-intro">Cada música aqui guarda uma parte nossa história, escute com carinho, te amo.</p>
+                
+                <!-- IMPORTANTE: Substitua o <iframe> abaixo pelo da sua playlist -->
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1NArEDikMiNGXRmQl4xt6C?utm_source=generator&theme=0"
+                width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen;
+                picture-in-picture" loading="lazy"></iframe>
+                
+            </div>
+        </main>
+        
+        <footer class="main-footer">
+            <p>Feito com todo amor do mundo, por mim para você.</p>
+        </footer>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+</html>
