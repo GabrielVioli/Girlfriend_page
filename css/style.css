@@ -1,0 +1,493 @@
+/* Paleta de cores (com tons suavizados) */
+:root {
+    --preto: #121212;
+    --roxo-fundo: #1a102c;
+    --roxo: #7c4dff; /* Roxo principal mais vibrante e suave */
+    --bordo: #c83e6a;
+    --roxo-claro: #d8b4fe; /* Lavanda suave */
+    --branco: #f0f0f0;
+    --cinza-transparente: rgba(255, 255, 255, 0.05);
+    --borda-transparente: rgba(255, 255, 255, 0.1);
+}
+
+/* Import da fonte */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Configurações Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(180deg, var(--preto) 0%, var(--roxo-fundo) 100%);
+    color: var(--branco);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Canvas para fumaça (no fundo) */
+#smoke {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Tela de Boas-Vindas */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--preto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    cursor: pointer;
+    transition: opacity 0.8s ease;
+}
+.welcome-content {
+    text-align: center;
+    color: var(--branco);
+}
+.welcome-heart {
+    font-size: 3rem;
+    color: var(--roxo);
+    margin-bottom: 20px;
+    animation: pulse 1.5s infinite;
+}
+.welcome-content h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+.welcome-content p {
+    font-size: 1rem;
+    color: var(--roxo-claro);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+
+/* Conteúdo Principal do Site */
+#main-site-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px 15px;
+    position: relative;
+    z-index: 1;
+    opacity: 0; /* Começa invisível */
+    transition: opacity 0.8s ease;
+}
+
+/* Header */
+.main-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--roxo);
+    box-shadow: 0 0 25px rgba(124, 77, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.typing-effect {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--branco);
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid var(--roxo-claro);
+    animation: typing 3s steps(30) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* Grid de Navegação */
+.nav-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.card {
+    background: var(--cinza-transparente);
+    border: 1px solid var(--borda-transparente);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px 15px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--branco);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1; /* Para manter os cards quadrados */
+    transition: transform 0.3s ease, background 0.3s ease;
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+/* Animação de entrada dos cards */
+.card:nth-child(1) { animation-delay: 0.2s; }
+.card:nth-child(2) { animation-delay: 0.3s; }
+.card:nth-child(3) { animation-delay: 0.4s; }
+.card:nth-child(4) { animation-delay: 0.5s; }
+.card:nth-child(5) { animation-delay: 0.6s; }
+.card:nth-child(6) { animation-delay: 0.7s; }
+.card:nth-child(7) { animation-delay: 0.8s; }
+.card:nth-child(8) { animation-delay: 0.9s; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.card i {
+    font-size: 2rem;
+    color: var(--roxo-claro);
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.card p {
+    font-size: 0.75rem;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+/* --- FOOTER (RODAPÉ) CORRIGIDO --- */
+.main-footer {
+    margin-top: auto; /* Empurra o footer para o final */
+    padding: 15px 20px; /* Espaçamento interno */
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+
+    /* Aplicando o padrão de design */
+
+    /* Estilo do texto */
+    font-size: 0.8rem;
+    color: var(--roxo-claro);
+}
+
+
+/* --- ESTILOS PARA PÁGINAS INTERNAS --- */
+
+/* Botão de Voltar Melhorado */
+.back-button-container {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.back-button {
+    background-color: var(--cinza-transparente);
+    border: 1px solid var(--borda-transparente);
+    color: var(--roxo-claro);
+    padding: 8px 16px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: var(--roxo);
+    color: var(--branco);
+    box-shadow: 0 0 15px rgba(124, 77, 255, 0.5);
+}
+
+/* Título e Conteúdo das Páginas Internas */
+.page-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--branco);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.page-content {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* --- ESTILOS PARA A PÁGINA letters.html --- */
+
+.letters-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.letter-trigger {
+    background-color: var(--cinza-transparente);
+    border: 1px solid var(--borda-transparente);
+    color: var(--branco);
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.letter-trigger:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.02);
+}
+
+.letter-display-area {
+    min-height: 200px;
+}
+
+.letter-content {
+    background-color: var(--cinza-transparente);
+    border-left: 4px solid var(--roxo);
+    padding: 25px;
+    border-radius: 8px;
+    animation: fadeIn 0.5s ease;
+}
+
+.letter-content h2 {
+    color: var(--roxo-claro);
+    margin-bottom: 15px;
+}
+
+.letter-content p {
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+/* --- ESTILOS PARA A PÁGINA gallery.html --- */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+/* Estilos do Lightbox */
+.lightbox {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80%;
+    animation: fadeIn 0.5s ease;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- CONTROLE DE MÚSICA FLUTUANTE --- */
+.music-control-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background-color: rgba(124, 77, 255, 0.8); /* var(--roxo) com transparência */
+    color: var(--branco);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+}
+
+.music-control-button:hover {
+    transform: scale(1.1);
+}
+
+.music-control-button i {
+    font-size: 1.2rem;
+}
+
+/* --- ESTILOS ATUALIZADOS PARA A PÁGINA letters.html --- */
+
+.letters-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.letter-trigger {
+    background-color: var(--cinza-transparente);
+    border: 1px solid var(--borda-transparente);
+    color: var(--branco);
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.letter-trigger:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.02);
+}
+
+.letter-display-area {
+    min-height: 250px; /* Um pouco mais de espaço */
+    padding-top: 10px;
+}
+
+/* Estilo base da carta (escondida) */
+.letter-content {
+    display: none; /* Começa escondida por padrão */
+    padding: 25px;
+    line-height: 1.8;
+
+    /* Efeito de vidro igual aos cards */
+    background: var(--cinza-transparente);
+    border: 1px solid var(--borda-transparente);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+}
+
+/* Estilo da carta QUANDO ATIVA (visível e com aura) */
+.letter-content.active {
+    display: block; /* Torna a carta visível */
+    animation: fadeIn 0.5s ease-out, aura-pulse 2.5s infinite; /* Aplica duas animações */
+}
+
+.letter-content h2 {
+    color: var(--roxo-claro);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.letter-content p {
+    font-size: 1rem;
+}
+
+/* Animação da aura roxa pulsante */
+@keyframes aura-pulse {
+    0% {
+        box-shadow: 0 0 20px rgba(124, 77, 255, 0.5), 0 0 25px rgba(124, 77, 255, 0.4) inset;
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(124, 77, 255, 0.7), 0 0 40px rgba(124, 77, 255, 0.5) inset;
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(124, 77, 255, 0.5), 0 0 25px rgba(124, 77, 255, 0.4) inset;
+    }
+}
+
+/* Estilo base da carta (escondida) */
+.letter-content {
+    display: none; /* Começa escondida por padrão */
+    padding: 25px;
+    line-height: 1.8;
+    background: var(--cinza-transparente);
+    border: 1px solid var(--borda-transparente);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+}
+
+/* Estilo da carta QUANDO ATIVA (visível e com aura) */
+.letter-content.active {
+    display: block; /* Torna a carta visível */
+    animation: fadeIn 0.5s ease-out, aura-pulse 2.5s infinite; /* Aplica duas animações */
+}
+
+/* Animação da aura roxa pulsante */
+@keyframes aura-pulse {
+    0% {
+        box-shadow: 0 0 20px rgba(124, 77, 255, 0.5), 0 0 25px rgba(124, 77, 255, 0.4) inset;
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(124, 77, 255, 0.7), 0 0 40px rgba(124, 77, 255, 0.5) inset;
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(124, 77, 255, 0.5), 0 0 25px rgba(124, 77, 255, 0.4) inset;
+    }
+}
