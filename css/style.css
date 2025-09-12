@@ -839,3 +839,100 @@ body {
     transition: transform 0.1s ease;
 }
 
+/* --- ESTILOS PARA O LINK SECRETO (index.html) --- */
+
+.secret-link-container {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 30px; /* Espaço depois dos cards */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.secret-link {
+    display: inline-block;
+    padding: 20px 30px;
+    background: var(--cinza-transparente);
+    border: 2px dashed var(--bordo); /* Borda tracejada e vermelha */
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--branco);
+    animation: pulse 1s infinite; /* Animação pulsante para chamar a atenção */
+    transition: transform 0.3s;
+}
+
+.secret-link:hover {
+    transform: scale(1.05);
+}
+
+.secret-link h3 {
+    color: var(--bordo);
+    font-weight: 600;
+}
+
+.secret-link p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.secret-link span {
+    font-size: 1.5rem;
+}
+
+
+/* --- ESTILOS ENFEITADOS PARA VÍDEOS E PÁGINA SECRETA --- */
+
+.secret-page-content {
+    text-align: center;
+}
+
+.secret-page-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--roxo-claro);
+    margin-bottom: 25px;
+}
+
+.final-message {
+    margin-top: 25px;
+    font-weight: 600;
+    font-size: 1.2rem !important;
+}
+
+/* Animação da aura pulsante para o vídeo */
+@keyframes video-glow {
+    0% {
+        box-shadow: 0 0 25px rgba(216, 180, 254, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(216, 180, 254, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 25px rgba(216, 180, 254, 0.4);
+    }
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Proporção 16:9 para manter o vídeo responsivo */
+    
+    /* Novo visual "enfeitado" */
+    border-radius: 20px; /* Bordas arredondadas */
+    overflow: hidden; /* Garante que o vídeo fica dentro das bordas */
+    
+    /* Aplica a animação de aura roxa */
+    animation: video-glow 3s infinite ease-in-out;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--borda-transparente); /* Adiciona uma borda de vidro subtil */
+    border-radius: 20px; /* Garante que o vídeo também tem cantos arredondados */
+}
