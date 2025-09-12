@@ -20,6 +20,11 @@
     box-sizing: border-box;
 }
 
+/* Adicionar esta linha */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: linear-gradient(180deg, var(--preto) 0%, var(--roxo-fundo) 100%);
     color: var(--branco);
@@ -739,5 +744,98 @@ body {
 .date-result-card small {
     font-size: 0.9rem;
     opacity: 0.8;
+}
+
+/* --- ESTILOS PARA A PÁGINA playlist.html --- */
+#suggestion-form {
+    background: var(--cinza-transparente);
+    border: 1px solid var(--borda-transparente);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px 25px;
+    text-align: center;
+}
+
+#suggestion-form h2 {
+    color: var(--roxo-claro);
+    margin-bottom: 10px;
+}
+
+#suggestion-form p {
+    opacity: 0.8;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--borda-transparente);
+    border-radius: 10px;
+    color: var(--branco);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.submit-btn {
+    background-color: var(--roxo);
+    color: var(--branco);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: var(--roxo-claro);
+}
+
+.result-card {
+    background: var(--cinza-transparente);
+    border: 1px solid var(--borda-transparente);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+/* --- ESTILOS PARA A PÁGINA map.html --- */
+
+.map-intro {
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.7;
+    color: var(--roxo-claro);
+}
+
+#map {
+    height: 50vh; /* Altura do mapa */
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid var(--borda-transparente);
+    z-index: 1; /* Garante que o mapa fica acima da fumaça */
+}
+
+/* Feedback de toque para telemóvel */
+.card:active,
+.back-button:active,
+.letter-trigger:active,
+.quiz-option:active,
+.submit-btn:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
 }
 

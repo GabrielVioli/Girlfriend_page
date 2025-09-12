@@ -229,4 +229,75 @@ document.addEventListener('DOMContentLoaded', () => {
             resultCard.style.display = 'block';
         });
     }
+
+    // --- LÓGICA PARA A PÁGINA DE PLAYLIST COLABORATIVA ---
+    const suggestionForm = document.getElementById('suggestion-form');
+    if (suggestionForm) {
+        const thanksCard = document.getElementById('suggestion-thanks');
+        suggestionForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Impede o recarregamento da página
+            suggestionForm.style.display = 'none';
+            thanksCard.style.display = 'block';
+        });
+    }
+
+    // --- LÓGICA PARA A PÁGINA DO MAPA ---
+    const mapDiv = document.getElementById('map');
+    if (mapDiv) {
+        // 1. INICIALIZA O MAPA
+        // Troque as coordenadas [-25.4284, -49.2733] pela sua cidade e o zoom (13)
+        const map = L.map('map').setView([-25.385679501650788, -51.48159767058508], 10);
+
+        // 2. ADICIONA O "VISUAL" DO MAPA
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // 3. ADICIONE OS SEUS MARCADORES AQUI
+        // Para encontrar as coordenadas: vá ao Google Maps, clique com o botão direito no local e copie os números.
+        
+        // Exemplo de marcador 1
+        L.marker([-25.396641162563988, -51.49697690572052]) // Coordenadas do local
+            .addTo(map)
+            .bindPopup("<b>Nosso lugar favorito</b>");
+
+        // Exemplo de marcador 2
+        L.marker([-25.393455795642158, -51.46562171887554]) // Coordenadas de outro local
+            .addTo(map)
+            .bindPopup("<b>Lugar que a gente mais vai</b>");
+
+        L.marker([-25.393455795642158, -51.46562171887554]) // Coordenadas de outro local
+            .addTo(map)
+            .bindPopup("<b>Lugar que a gente mais vai</b>");
+
+        L.marker([-25.399750871982004, -51.47213643378566]) // Coordenadas de outro local
+            .addTo(map)
+            .bindPopup("<b>As vezes a gente vai</b>");
+
+        L.marker([-25.40790398079299, -51.47148555571832]) // Coordenadas de outro local
+            .addTo(map)
+            .bindPopup("<b>A gente foi muitas vezes</b>");
+
+        L.marker([-25.405080594528208, -51.466996417787996]) // Coordenadas de outro local
+            .addTo(map)
+            .bindPopup("<b>QUERO IR DE NOVO</b>");
+
+        L.marker([-25.399414785408815, -51.470535794523094]) // Coordenadas de outro local
+            .addTo(map)
+            .bindPopup("<b>sdds rs</b>");
+
+        L.marker([-25.57035259941736, -48.31507901555088]) // Coordenadas de outro local
+            .addTo(map)
+            .bindPopup("<b>Ano que vem tamo de volta</b>");
+
+        L.marker([-25.402392586653214, -51.498051282499354]) // Coordenadas de outro local
+            .addTo(map)
+            .bindPopup("<b>A maior parte do nosso tempo se passa aqui</b>");
+
+        L.marker([-25.40581008919907, -51.49761758398823]) // Coordenadas de outro local
+            .addTo(map)
+            .bindPopup("<b>Um dos lugares que mais gosto</b>");
+            
+        // Copie e cole o bloco L.marker(...) para adicionar mais locais
+    }
 });
