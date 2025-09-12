@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Cartas para Você 💜</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <audio id="background-music" loop></audio> 
+    <canvas id="smoke"></canvas>
+
+    <div id="main-site-content" style="opacity: 1;">
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i> Voltar ao Início
+            </a>
+        </div>
+
+        <header class="main-header">
+            <h1 class="page-title">Cartas Para Você 💌</h1> 
+        </header>
+
+        <main class="page-content">
+            <div class="letters-container">
+                <button class="letter-trigger" data-target="letter1">Abra quando sentir saudades...</button>
+                <button class="letter-trigger" data-target="letter2">Abra quando tiver um dia difícil...</button>
+                <button class="letter-trigger" data-target="letter3">Abra quando quiser rir...</button>
+                <button class="letter-trigger" data-target="letter4">Abra quando duvidar do meu amor...</button>
+            </div>
+
+            <div class="letter-display-area">
+                <!-- AJUSTE: O placeholder agora fica visível por padrão com a classe 'active' -->
+                <div id="letter-placeholder" class="letter-content active">
+                    <p>Selecione uma carta acima para ler.</p>
+                </div>
+
+                <!-- AJUSTE: Removido o 'style="display: none;"' de todas as cartas abaixo -->
+                <div id="letter1" class="letter-content">
+                    <h2>Quando a saudade bater</h2>
+                    <p>Oi meu bem. Sei que às vezes você se sente só, mas 
+                        quero que saiba que estou aqui com você, mesmo que 
+                        seja só no pensamento agora. Cada sorriso seu é 
+                        importante pra mim, cada momento que passamos juntos está guardado no 
+                        meu coração. Respira bem fundo, amor… você nunca está realmente sozinha, porque eu estou com você.</p>
+                </div>
+                <div id="letter2" class="letter-content">
+                    <h2>Para os dias difíceis</h2>
+                    <p>Oi meu amor. Sei que hoje está difícil, mas quero que saiba que eu estou aqui, 
+                        pensando em você e te mandando todo meu carinho. Você é minha pessoa favorita, e 
+                        não precisa enfrentar nada sozinha.</p>
+                </div>
+                <div id="letter3" class="letter-content">
+                    <h2>Para você rir</h2>
+                    <p>pensei em fazer uma piadinha ruim, mas vc não vai rir tão facil. Te amo</p>
+                </div>
+                <div id="letter4" class="letter-content">
+                    <h2>Nunca duvide...</h2>
+                    <p>...de que eu te amo, hoje, amanhã e em todos os dias da minha vida. Você é tudo para mim.</p>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="main-footer">
+            <p>Feito com todo amor do mundo, por mim para você.</p>
+        </footer>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+</html>
