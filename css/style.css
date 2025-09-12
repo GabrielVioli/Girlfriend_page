@@ -575,3 +575,169 @@ body {
     color: var(--roxo-claro);
     padding: 0 10px;
 }
+
+/* --- ESTILOS PARA A PÁGINA quiz.html --- */
+
+.quiz-question {
+    margin-bottom: 30px;
+}
+
+.quiz-question h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quiz-option {
+    background-color: var(--cinza-transparente);
+    border: 1px solid var(--borda-transparente);
+    color: var(--branco);
+    padding: 15px;
+    border-radius: 12px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quiz-option.selected {
+    background-color: var(--roxo);
+    border-color: var(--roxo-claro);
+    transform: scale(1.03);
+}
+
+.quiz-option.correct {
+    background-color: #28a745; /* Verde */
+    border-color: #28a745;
+}
+
+.quiz-option.incorrect {
+    background-color: #dc3545; /* Vermelho */
+    border-color: #dc3545;
+}
+
+#quiz-submit-btn, #quiz-retry-btn {
+    background-color: var(--roxo);
+    color: var(--branco);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+#quiz-submit-btn:hover, #quiz-retry-btn:hover {
+    background-color: var(--roxo-claro);
+}
+
+.quiz-result-card {
+    background: var(--cinza-transparente);
+    border: 1px solid var(--borda-transparente);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.quiz-result-card h2 {
+    color: var(--roxo-claro);
+    margin-bottom: 15px;
+}
+
+/* --- ESTILOS PARA A PÁGINA datebuilder.html --- */
+
+#date-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.date-choice-group label {
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.date-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.date-options label {
+    background: var(--cinza-transparente);
+    border: 1px solid var(--borda-transparente);
+    padding: 20px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.date-options input[type="radio"] {
+    display: none; /* Esconde a bolinha do rádio */
+}
+
+.date-options input[type="radio"]:checked + span {
+    color: var(--roxo-claro);
+    font-weight: 600;
+}
+
+.date-options label:has(input[type="radio"]:checked) {
+    background-color: var(--roxo);
+    border-color: var(--roxo-claro);
+    transform: scale(1.05);
+}
+
+#date-submit-btn {
+     background-color: var(--roxo);
+    color: var(--branco);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.date-result-card {
+     background: var(--cinza-transparente);
+    border: 1px solid var(--borda-transparente);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.date-result-card h2 {
+    color: var(--roxo-claro);
+}
+
+.date-result-card p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin: 15px 0;
+}
+
+.date-result-card small {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+

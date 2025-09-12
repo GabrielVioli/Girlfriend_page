@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Nosso Encontro 💜</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <audio id="background-music" loop>
+        <source src="../sounds/3 . Djonga - Leal.mp3" type="audio/mpeg">
+    </audio> 
+    <canvas id="smoke"></canvas>
+
+    <div id="main-site-content" style="opacity: 1;">
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i> Voltar ao Início
+            </a>
+        </div>
+
+        <header class="main-header">
+            <h1 class="page-title">Crie Nosso Próximo Encontro 🌹</h1> 
+        </header>
+
+        <main class="page-content">
+            <form id="date-form">
+                <!-- ESCOLHA 1 -->
+                <div class="date-choice-group">
+                    <label>Qual o clima do encontro?</label>
+                    <div class="date-options">
+                        <label><input type="radio" name="clima" value="um jantar romântico em casa" checked><span>Relaxante em casa</span></label>
+                        <label><input type="radio" name="clima" value="uma noite agitada"><span>Agitado na rua</span></label>
+                    </div>
+                </div>
+                
+                <!-- ESCOLHA 2 -->
+                 <div class="date-choice-group">
+                    <label>E pra comer?</label>
+                    <div class="date-options">
+                        <label><input type="radio" name="comida" value="pizza e ver um filme" checked><span>Pizza e filme</span></label>
+                        <label><input type="radio" name="comida" value="jantar num restaurante chique(nem tanto)"><span>Restaurante chique</span></label>
+                    </div>
+                </div>
+
+                <!-- ESCOLHA 3 -->
+                 <div class="date-choice-group">
+                    <label>Pra terminar a noite...</label>
+                    <div class="date-options">
+                        <label><input type="radio" name="final" value="dar uma dormida bem gostosinho" checked><span>Dormir</span></label>
+                        <label><input type="radio" name="final" value="uma desestressada"><span>rs</span></label>
+                    </div>
+                </div>
+
+                <button type="submit" id="date-submit-btn">Ver o Plano!</button>
+            </form>
+
+            <!-- Tela de Resultado (escondida) -->
+            <div id="date-result" class="date-result-card" style="display: none;">
+                <h2>Nosso Encontro Perfeito:</h2>
+                <p id="date-result-text"></p>
+                <small>To ansioso já</small>
+            </div>
+        </main>
+        
+        <footer class="main-footer">
+            <p>Feito com todo amor do mundo, por mim para você.</p>
+        </footer>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+</html>

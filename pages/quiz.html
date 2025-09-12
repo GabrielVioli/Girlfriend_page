@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Nosso Quiz 💜</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <audio id="background-music" loop>
+        <source src="../sounds/Froid part. Cynthia Luz - Lamentável pt. III (Clipe Oficial).mp3" type="audio/mpeg">
+    </audio> 
+    <canvas id="smoke"></canvas>
+
+    <div id="main-site-content" style="opacity: 1;">
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i> Voltar ao Início
+            </a>
+        </div>
+
+        <header class="main-header">
+            <h1 class="page-title">O Quanto você me conhece?</h1> 
+        </header>
+
+        <main class="page-content">
+            <div id="quiz-container">
+                <!-- PERGUNTA 1 - Personalize o conteúdo -->
+                <div class="quiz-question">
+                    <h3>Quem disse eu te amo primeiro?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option">O tigrinho</button>
+                        <button class="quiz-option" data-correct="true">Yza</button>
+                        <button class="quiz-option">Gabriel</button>
+                    </div>
+                </div>
+
+                <!-- PERGUNTA 2 - Copie e cole este bloco para adicionar mais -->
+                <div class="quiz-question">
+                    <h3>Onde foi o nosso primeiro beijo?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-correct="true">Catedral</button>
+                        <button class="quiz-option">Jordão</button>
+                        <button class="quiz-option">No lago</button>
+                    </div>
+                </div>
+                
+                <!-- PERGUNTA 3 -->
+                 <div class="quiz-question">
+                    <h3>Minha comida favorita?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option">Macarrão</button>
+                        <button class="quiz-option">sushi</button>
+                        <button class="quiz-option" data-correct="true">Strogonoff</button>
+                    </div>
+                </div>
+
+                <button id="quiz-submit-btn">Ver Resultado</button>
+            </div>
+            
+            <!-- Tela de Resultado (escondida) -->
+            <div id="quiz-result" class="quiz-result-card" style="display: none;">
+                <h2 id="quiz-score-text"></h2>
+                <p id="quiz-message-text"></p>
+                <button id="quiz-retry-btn">Tentar Novamente</button>
+            </div>
+        </main>
+        
+        <footer class="main-footer">
+            <p>Feito com todo amor do mundo, por mim para você.</p>
+        </footer>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+</html>

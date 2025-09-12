@@ -159,4 +159,74 @@ document.addEventListener('DOMContentLoaded', () => {
         animateSmoke();
         window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
     }
+
+    // --- LÓGICA PARA A PÁGINA DE QUIZ ---
+    const quizContainer = document.getElementById('quiz-container');
+    if (quizContainer) {
+        const submitBtn = document.getElementById('quiz-submit-btn');
+        const retryBtn = document.getElementById('quiz-retry-btn');
+        const questions = document.querySelectorAll('.quiz-question');
+        const resultCard = document.getElementById('quiz-result');
+        const scoreText = document.getElementById('quiz-score-text');
+        const messageText = document.getElementById('quiz-message-text');
+
+        questions.forEach(question => {
+            const options = question.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    options.forEach(o => o.classList.remove('selected'));
+                    option.classList.add('selected');
+                });
+            });
+        });
+
+        submitBtn.addEventListener('click', () => {
+            let score = 0;
+            questions.forEach(question => {
+                const selectedOption = question.querySelector('.quiz-option.selected');
+                if (selectedOption) {
+                    if (selectedOption.dataset.correct === 'true') {
+                        score++;
+                        selectedOption.classList.add('correct');
+                    } else {
+                        selectedOption.classList.add('incorrect');
+                    }
+                }
+            });
+
+            scoreText.innerText = `Acertou ${score} de ${questions.length}!`;
+            if (score === questions.length) {
+                messageText.innerText = 'Parabens, bom mesmo❤️';
+            } else {
+                messageText.innerText = 'Eu acho que você não me ama';
+            }
+
+            quizContainer.style.display = 'none';
+            resultCard.style.display = 'block';
+        });
+
+        retryBtn.addEventListener('click', () => {
+            window.location.reload();
+        });
+    }
+
+    // --- LÓGICA PARA A PÁGINA DATE BUILDER ---
+    const dateForm = document.getElementById('date-form');
+    if (dateForm) {
+        const resultCard = document.getElementById('date-result');
+        const resultText = document.getElementById('date-result-text');
+
+        dateForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(dateForm);
+            const clima = formData.get('clima');
+            const comida = formData.get('comida');
+            const final = formData.get('final');
+            
+            resultText.innerText = `Vamos ter ${clima}, depois vamos comer ${comida} e, para terminar, vamo dar uma ${final}.`;
+
+            dateForm.style.display = 'none';
+            resultCard.style.display = 'block';
+        });
+    }
 });
