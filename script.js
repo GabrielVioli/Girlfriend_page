@@ -1,4 +1,24 @@
-// Fumaça realista com partículas suaves
+// --- LÓGICA DA TELA DE BOAS-VINDAS E MÚSICA ---
+const welcomeScreen = document.getElementById('welcome-screen');
+const mainContent = document.getElementById('main-site-content');
+const backgroundMusic = document.getElementById('background-music');
+
+welcomeScreen.addEventListener('click', () => {
+    // Inicia a música
+    backgroundMusic.play();
+
+    // Esconde a tela de boas-vindas
+    welcomeScreen.style.opacity = '0';
+    setTimeout(() => {
+        welcomeScreen.style.display = 'none';
+    }, 800); // Tempo da transição do CSS
+
+    // Mostra o conteúdo principal
+    mainContent.style.opacity = '1';
+});
+
+
+// --- EFEITO DE FUMAÇA (SEU CÓDIGO ORIGINAL) ---
 const canvas = document.getElementById('smoke');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -7,7 +27,7 @@ canvas.height = window.innerHeight;
 class Smoke {
     constructor() { this.reset(); }
     reset() {
-        this.fromTop = Math.random() < 0.5; // 50% de chance de vir do topo
+        this.fromTop = Math.random() < 0.5;
         this.x = Math.random() * canvas.width;
         this.y = this.fromTop ? -Math.random() * 100 : canvas.height + Math.random() * 100;
         this.size = Math.random() * 60 + 40;
@@ -17,9 +37,9 @@ class Smoke {
     }
     update() {
         if(this.fromTop) {
-            this.y += this.speedY; // vai descendo
+            this.y += this.speedY;
         } else {
-            this.y -= this.speedY; // vai subindo
+            this.y -= this.speedY;
         }
         this.angle += 0.002;
         this.x += Math.sin(this.angle) * 0.3;
@@ -38,7 +58,7 @@ class Smoke {
 }
 
 const smokes = [];
-for (let i=0; i<60; i++) smokes.push(new Smoke()); // mais partículas para efeito mais cheio
+for (let i=0; i<60; i++) smokes.push(new Smoke());
 
 function animateSmoke() {
     ctx.clearRect(0,0,canvas.width,canvas.height);

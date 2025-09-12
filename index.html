@@ -2,49 +2,78 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isa 💜</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Para a Isa 💜</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Música de fundo -->
-    <audio id="background-music" autoplay loop>
+    <audio id="background-music" loop>
         <source src="sounds/musica1.mp3" type="audio/mpeg">
         Seu navegador não suporta o elemento de áudio.
     </audio>
 
-    <!-- Canvas para fumaça -->
     <canvas id="smoke"></canvas>
 
-    <div class="container d-flex flex-column justify-content-center align-items-center position-relative main-content">
-
-        <!-- Foto central -->
-        <img src="images/foto1.jpg" alt="Foto da Isa" class="profile-pic">
-
-        <!-- Texto com efeito de digitação -->
-        <h1 class="typing-effect">Seja bem-vinda, meu amor 💜</h1>
-
-        <!-- Cards -->
-        <div class="card-container">
-            <div class="card">
-                <h3>Linha do tempo</h3>
-                <p>Reviva nossos momentos especiais e veja nossa história juntos.</p>
-                <button>Ver linha do tempo</button>
-            </div>
-            <div class="card">
-                <h3>Nossas músicas</h3>
-                <p>Ouça as músicas que marcaram nossa história de amor.</p>
-                <button>Ouvir músicas</button>
-            </div>
-            <div class="card">
-                <h3>Jogos</h3>
-                <p>Se divirta com os jogos que gostamos de jogar juntos.</p>
-                <button>Explorar jogos</button>
-            </div>
+    <div id="welcome-screen">
+        <div class="welcome-content">
+            <i class="fa-regular fa-heart welcome-heart"></i>
+            <h2>Um presente para você</h2>
+            <p>Toque para entrar</p>
         </div>
+    </div>
 
+    <div id="main-site-content">
+        <header class="main-header">
+            <img src="images/foto1.jpg" alt="Foto da Isa" class="profile-pic">
+            <h1 class="typing-effect">Seja bem-vinda, meu amor 💜</h1>
+        </header>
+
+        <main class="nav-grid">
+            <a href="timeline.html" class="card">
+                <i class="fa-solid fa-film"></i>
+                <h3>Nossa História</h3>
+                <p>Uma viagem por nossas memórias.</p>
+            </a>
+            
+            <a href="gallery.html" class="card">
+                <i class="fa-solid fa-camera-retro"></i>
+                <h3>Galeria</h3>
+                <p>Momentos que guardei no coração.</p>
+            </a>
+
+            <a href="music.html" class="card">
+                <i class="fa-solid fa-music"></i>
+                <h3>Playlist</h3>
+                <p>A trilha sonora do nosso amor.</p>
+            </a>
+
+            <a href="letters.html" class="card">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <h3>Abra Quando...</h3>
+                <p>Cartas para todos os momentos.</p>
+            </a>
+
+            <a href="quiz.html" class="card">
+                <i class="fa-solid fa-puzzle-piece"></i>
+                <h3>Nosso Quiz</h3>
+                <p>Teste seus conhecimentos sobre nós!</p>
+            </a>
+            
+            <a href="map.html" class="card">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <h3>Nosso Mapa</h3>
+                <p>Os lugares que marcaram a gente.</p>
+            </a>
+        </main>
+        
+        <footer class="main-footer">
+            <p>Feito com todo amor do mundo, por mim para você.</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>
