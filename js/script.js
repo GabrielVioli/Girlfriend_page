@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA PARA A PÁGINA DO MAPA (sem alteração) ---
+
     const mapDiv = document.getElementById('map');
     if (mapDiv) {
         const map = L.map('map').setView([-25.385679501650788, -51.48159767058508], 10);
